@@ -1,5 +1,9 @@
-.venv
 .env
+.venv
+media
+необходимое
+
+.
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm
@@ -241,8 +245,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
-.venv
+Lesson/.env
+Lesson/.venv
 env/
 venv/
 ENV/
