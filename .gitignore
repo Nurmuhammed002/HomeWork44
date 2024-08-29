@@ -2,6 +2,9 @@
 .venv
 media
 необходимое
+Homework2
+db
+handlers
 
 .
 
@@ -245,8 +248,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-Lesson/.env
-Lesson/.venv
+Homework2/.env
+Homework2/.venv
 env/
 venv/
 ENV/
