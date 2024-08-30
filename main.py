@@ -72,3 +72,47 @@ if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     start_scheduler(loop)
     executor.start_polling(dp, skip_updates=True, loop=loop)
+
+import asyncio
+from aiogram import executor
+from config import dp
+from Homework5.handlers  import register_handlers
+import aioschedule
+from Homework5.db_main import create_tables
+from config import bot
+
+
+
+async def send_daily_updates():
+    products = get_products()
+    if not products:
+        return
+
+    product_list = "\n\n".join([f"ID: {p[1]}, Категория: {p[2]}, Информация: {p[3]}" for p in products])
+    await bot.send_message(chat_id="YOUR_ADMIN_ID", text=f"Ежедневные обновления:\n\n{product_list}")
+
+
+async def scheduler():
+    aioschedule.every().day.at("09:00").do(send_daily_updates)
+    aioschedule.every().day.at("19:00").do(send_daily_updates)
+
+    while True:
+        await aioschedule.run_pending()
+        await asyncio.sleep(1)
+
+
+def start_scheduler(loop):
+    asyncio.ensure_future(scheduler(), loop=loop)
+
+
+
+create_tables()
+
+
+register_handlers(dp)
+
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    start_scheduler(loop)
+
+    executor.start_polling(dp, skip_updates=True)
