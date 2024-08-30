@@ -5,7 +5,6 @@ def create_db():
     conn = sqlite3.connect('products.db')
     cursor = conn.cursor()
 
-    # Создание таблицы для продуктов
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS products_details (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -4,7 +4,7 @@ def get_main_menu_buttons():
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(KeyboardButton("/start"))
     keyboard.add(KeyboardButton("/info"))
-    keyboard.add(KeyboardButton("/show_products"))  # Кнопка для показа продуктов
+    keyboard.add(KeyboardButton("/show_products"))
     return keyboard
 
 def get_product_buttons():
